@@ -104,7 +104,7 @@ h3{
     text-align: center;
 }
 #click{
-    display: inline-block;
+    display: inline;
     margin-top: 15px;
     margin-left: 150px;
     align-items: center;
@@ -136,6 +136,7 @@ h3{
     border-radius: 10px;
     box-shadow: 10px 10px 10px 5px #4b6387;
 }
+
 .errorDisplay{
     align-items: center;
     background-color: #6582AA;
@@ -154,17 +155,16 @@ h3{
 p{
     text-align: center;
     font-family: Robo;
-    font-size: 50px;
+    font-size: 20px;
 }
 #displaydetail{
+    align-items: center;
     overflow-y: scroll;
     text-align: center;
-    align-items: center;
     background-color: #6582AA;
     width: 500px;
     height: 1000px;
     border: 5px ;
-    margin: auto;
     padding: 10px;
     font-size: 20px;
     font-family: Robo;
@@ -184,16 +184,11 @@ p{
     border-radius: 10px;
     -webkit-box-shadow: inset 0 0 6px #021024; 
 }
-.modal .detail {
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
-    width: 450px;
-    padding: 1.3rem;
-    min-height: 250px;
-    position: absolute;
-    top: 20%;
-    border: 1px solid #ddd;
+.modal{
+    display: inline;
+    position: absolute ;
+    top:200px;
+    right: 1000px;
     border-radius: 15px;
 }
 .btn-close {
@@ -214,7 +209,7 @@ p{
     backdrop-filter: blur(3px);
     z-index: 1;
 }
-.modal {
+.modal{
     z-index: 2;
 }
 .hidden {

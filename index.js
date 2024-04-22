@@ -1,7 +1,9 @@
 const input = document.getElementById("input");
 const recepetForm = document.querySelector(".search");
 const tab = document.querySelector(".output");
-const detail = document.querySelector("modal");
+const detail = document.querySelector(".modal");
+const hiddenweb = document.querySelector(".overlay");
+
 
 recepetForm .addEventListener("submit", async event =>{
     event.preventDefault();
@@ -64,13 +66,51 @@ function Displayrecipes(data){
 			div.appendChild(title);
 			div.appendChild(button);
 			button.onclick = function getRecept(){
-			    let receptdetail = document.createElement("div");
-				receptdetail.setAttribute("id", "displaydetail")
-
-	            tab.appendChild(receptdetail);
-	            receptdetail .textContent = data.d[i].Ingredients;
-				console.log(receptdetail);
+				let receptdetail = document.createElement("div");
+				receptdetail.setAttribute("id", "displaydetail");
+				let closebtm = document.createElement("button");
+				closebtm.setAttribute("class", "btn-close");
+				closebtm.textContent="X";
+				let ingredientsBox = document.createElement("ul");
+				ingredientsBox.setAttribute("id","ingredients");
+				let TitleIngredient =document.createElement("h3");
+				TitleIngredient.textContent = "Ingredients :";
+				const IngArray = Object.values(data.d[i].Ingredients);
+				let lenghtIngArray = IngArray.length;
+				for(s = 0; lenghtIngArray> s; s++){
+					let ingredients = document.createElement("li");
+                    ingredients.innerHTML =IngArray[s];
+					ingredientsBox.appendChild(ingredients);
 				}
+				
+				
+				
+				
+				
+				let TitleInstructions =document.createElement("h3");
+				TitleInstructions.textContent="Instructions:";
+				let instructions = document.createElement("p");
+				instructions.textContent= data.d[i].Instructions;
+				
+
+				detail.appendChild(receptdetail);
+				receptdetail.appendChild(closebtm);
+				receptdetail.appendChild(TitleIngredient);
+				receptdetail.append(ingredientsBox);
+				receptdetail.appendChild(TitleInstructions);
+				receptdetail.append(instructions);
+
+				hiddenweb.style.display= "flex";
+				detail.classList.add="flex";
+				
+
+				closebtm.onclick = function closeWindow(){
+					if(hiddenweb.style.display= "flex" ){
+						hiddenweb.style.display ="none";
+						receptdetail.style.display="none"
+					}
+				}
+			}
 		}
 	}else{
 		nofood();
